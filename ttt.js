@@ -2,8 +2,6 @@ window.onload = function(){
   
   // Collection of all squares on the board.
   var squares = document.getElementsByTagName('td');
-  
-  var turn = "X";
   var count = 0;
   
   function add_mark(){
@@ -27,12 +25,13 @@ window.onload = function(){
     squares[i].addEventListener("click", add_mark);
 	squares[i].addEventListener("click", increment_count);
 	squares[i].addEventListener("click", isWinningGame);
-	squares[i].addEventListener("click", isBoardFull);
+	squares[i].addEventListener("click", isCatsGame);
   }
   
-  function isBoardFull(){
+  function isCatsGame(){
 	  if( count === 9 && isWinningGame() === false){
 		  alert("Cat's Game");
+		  location.reload();
 	  }
 	  else{
 		  console.log("not a tie");
@@ -42,27 +41,35 @@ window.onload = function(){
   function isWinningGame(){
 	  if( (squares[0].innerHTML != "-" && squares[1].innerHTML != "-" && squares[2].innerHTML != "-") && (squares[0].innerHTML === squares[1].innerHTML && squares[0].innerHTML === squares[2].innerHTML) ){
 		  alert(squares[0].innerHTML + " is the winner!");
+		  location.reload();
 	  }
 	  else if( (squares[3].innerHTML != "-" && squares[4].innerHTML != "-" && squares[5].innerHTML != "-") && (squares[3].innerHTML === squares[4].innerHTML && squares[3].innerHTML === squares[5].innerHTML) ){
 		  alert(squares[3].innerHTML + " is the winner!");
+		  location.reload();
 	  }
 	  else if( (squares[6].innerHTML != "-" && squares[7].innerHTML != "-" && squares[8].innerHTML != "-") && (squares[6].innerHTML === squares[7].innerHTML && squares[6].innerHTML === squares[8].innerHTML) ){
 		  alert(squares[6].innerHTML + " is the winner!");
+		  location.reload();
 	  }
 	  else if( (squares[0].innerHTML != "-" && squares[3].innerHTML != "-" && squares[6].innerHTML != "-") && (squares[0].innerHTML === squares[3].innerHTML && squares[0].innerHTML === squares[6].innerHTML) ){
 		  alert(squares[0].innerHTML + " is the winner!");
+		  location.reload();
 	  }
 	  else if( (squares[1].innerHTML != "-" && squares[4].innerHTML != "-" && squares[7].innerHTML != "-") && (squares[1].innerHTML === squares[4].innerHTML && squares[1].innerHTML === squares[7].innerHTML) ){
 		  alert(squares[1].innerHTML + " is the winner!");
+		  location.reload();
 	  }
 	  else if( (squares[2].innerHTML != "-" && squares[5].innerHTML != "-" && squares[8].innerHTML != "-") && (squares[2].innerHTML === squares[5].innerHTML && squares[2].innerHTML === squares[8].innerHTML) ){
 		  alert(squares[2].innerHTML + " is the winner!");
+		  location.reload();
 	  }
 	  else if( (squares[0].innerHTML != "-" && squares[4].innerHTML != "-" && squares[8].innerHTML != "-") && (squares[0].innerHTML === squares[4].innerHTML && squares[0].innerHTML === squares[8].innerHTML) ){
 		  alert(squares[0].innerHTML + " is the winner!");
+		  location.reload();
 	  }
 	  else if( (squares[2].innerHTML != "-" && squares[4].innerHTML != "-" && squares[6].innerHTML != "-") && (squares[2].innerHTML === squares[4].innerHTML && squares[2].innerHTML === squares[6].innerHTML) ){
 		  alert(squares[2].innerHTML + " is the winner!");
+		  location.reload();
 	  }
 	  else{
 		  return false;
