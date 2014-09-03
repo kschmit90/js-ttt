@@ -17,7 +17,6 @@ window.onload = function(){
   
   function increment_count() {
 	  count++;
-	  console.log(count);
   }
   
   for(var i = 0; i < squares.length; i++) {
@@ -32,9 +31,6 @@ window.onload = function(){
 	  if( count === 9 && isWinningGame() === false){
 		  alert("Cat's Game");
 		  location.reload();
-	  }
-	  else{
-		  console.log("not a tie");
 	  }
   }
   
@@ -69,7 +65,6 @@ window.onload = function(){
 	  }
 	  else if( (squares[2].innerHTML != "-" && squares[4].innerHTML != "-" && squares[6].innerHTML != "-") && (squares[2].innerHTML === squares[4].innerHTML && squares[2].innerHTML === squares[6].innerHTML) ){
 		  alert(squares[2].innerHTML + " is the winner!");
-		  location.reload();
 	  }
 	  else{
 		  return false;
