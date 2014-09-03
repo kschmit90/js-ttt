@@ -4,55 +4,69 @@ window.onload = function(){
   var squares = document.getElementsByTagName('td');
   
   var turn = "X";
-  var count = 0
+  var count = 0;
   
   function add_mark(){
 	  if(count % 2 === 0){
 		  this.innerHTML = "X";
+		  this.setAttribute("data-marked", "true")
 	  }
 	  else {
 		  this.innerHTML = "O";
-	  }
-  }
-  
-  var isWinningGame = function (){
-	  if( (squares[0].innerHTML != "-" && squares[1].innerHTML != "-" && squares[2].innerHTML != "-") && (squares[0].innerHTML === squares[1].innerHTML && squares[0].innerHTML === squares[2].innerHTML) ){
-		  alert("This works.");
-	  }
-	  else if( (squares[3].innerHTML != "-" && squares[4].innerHTML != "-" && squares[5].innerHTML != "-") && (squares[3].innerHTML === squares[4].innerHTML && squares[3].innerHTML === squares[5].innerHTML) ){
-		  alert("This also works.");
-	  }
-	  else if( (squares[6].innerHTML != "-" && squares[7].innerHTML != "-" && squares[8].innerHTML != "-") && (squares[6].innerHTML === squares[7].innerHTML && squares[6].innerHTML === squares[8].innerHTML) ){
-		  alert("This works too.");
-	  }
-	  else if( (squares[0].innerHTML != "-" && squares[3].innerHTML != "-" && squares[6].innerHTML != "-") && (squares[0].innerHTML === squares[3].innerHTML && squares[0].innerHTML === squares[6].innerHTML) ){
-		  alert("This works as well.");
-	  }
-	  else if( (squares[1].innerHTML != "-" && squares[4].innerHTML != "-" && squares[7].innerHTML != "-") && (squares[1].innerHTML === squares[4].innerHTML && squares[1].innerHTML === squares[7].innerHTML) ){
-		  alert("This should work.");
-	  }
-	  else if( (squares[2].innerHTML != "-" && squares[5].innerHTML != "-" && squares[8].innerHTML != "-") && (squares[2].innerHTML === squares[5].innerHTML && squares[2].innerHTML === squares[8].innerHTML) ){
-		  alert("This definitely works.");
-	  }
-	  else if( (squares[0].innerHTML != "-" && squares[4].innerHTML != "-" && squares[8].innerHTML != "-") && (squares[0].innerHTML === squares[4].innerHTML && squares[0].innerHTML === squares[8].innerHTML) ){
-		  alert("Check.");
-	  }
-	  else if( (squares[2].innerHTML != "-" && squares[4].innerHTML != "-" && squares[6].innerHTML != "-") && (squares[2].innerHTML === squares[4].innerHTML && squares[2].innerHTML === squares[6].innerHTML) ){
-		  alert("Affirmative.");
-	  }
-	  else{
-		  alert("Error.")
+		  this.setAttribute("data-marked", "true")
 	  }
   }
   
   function increment_count() {
 	  count++;
+	  console.log(count);
   }
   
   for(var i = 0; i < squares.length; i++) {
     // When you click a square, runs the `add_mark` method.
     squares[i].addEventListener("click", add_mark);
 	squares[i].addEventListener("click", increment_count);
+	squares[i].addEventListener("click", isWinningGame);
+	squares[i].addEventListener("click", isBoardFull);
+  }
+  
+  function isBoardFull(){
+	  if( count === 9 && isWinningGame() === false){
+		  alert("Cat's Game");
+	  }
+	  else{
+		  console.log("not a tie");
+	  }
+  }
+  
+  function isWinningGame(){
+	  if( (squares[0].innerHTML != "-" && squares[1].innerHTML != "-" && squares[2].innerHTML != "-") && (squares[0].innerHTML === squares[1].innerHTML && squares[0].innerHTML === squares[2].innerHTML) ){
+		  alert(squares[0].innerHTML + " is the winner!");
+	  }
+	  else if( (squares[3].innerHTML != "-" && squares[4].innerHTML != "-" && squares[5].innerHTML != "-") && (squares[3].innerHTML === squares[4].innerHTML && squares[3].innerHTML === squares[5].innerHTML) ){
+		  alert(squares[3].innerHTML + " is the winner!");
+	  }
+	  else if( (squares[6].innerHTML != "-" && squares[7].innerHTML != "-" && squares[8].innerHTML != "-") && (squares[6].innerHTML === squares[7].innerHTML && squares[6].innerHTML === squares[8].innerHTML) ){
+		  alert(squares[6].innerHTML + " is the winner!");
+	  }
+	  else if( (squares[0].innerHTML != "-" && squares[3].innerHTML != "-" && squares[6].innerHTML != "-") && (squares[0].innerHTML === squares[3].innerHTML && squares[0].innerHTML === squares[6].innerHTML) ){
+		  alert(squares[0].innerHTML + " is the winner!");
+	  }
+	  else if( (squares[1].innerHTML != "-" && squares[4].innerHTML != "-" && squares[7].innerHTML != "-") && (squares[1].innerHTML === squares[4].innerHTML && squares[1].innerHTML === squares[7].innerHTML) ){
+		  alert(squares[1].innerHTML + " is the winner!");
+	  }
+	  else if( (squares[2].innerHTML != "-" && squares[5].innerHTML != "-" && squares[8].innerHTML != "-") && (squares[2].innerHTML === squares[5].innerHTML && squares[2].innerHTML === squares[8].innerHTML) ){
+		  alert(squares[2].innerHTML + " is the winner!");
+	  }
+	  else if( (squares[0].innerHTML != "-" && squares[4].innerHTML != "-" && squares[8].innerHTML != "-") && (squares[0].innerHTML === squares[4].innerHTML && squares[0].innerHTML === squares[8].innerHTML) ){
+		  alert(squares[0].innerHTML + " is the winner!");
+	  }
+	  else if( (squares[2].innerHTML != "-" && squares[4].innerHTML != "-" && squares[6].innerHTML != "-") && (squares[2].innerHTML === squares[4].innerHTML && squares[2].innerHTML === squares[6].innerHTML) ){
+		  alert(squares[2].innerHTML + " is the winner!");
+	  }
+	  else{
+		  return false;
+	  }
   }
 
 }	
